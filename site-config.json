@@ -1,0 +1,100 @@
+{
+  "welcome": {
+    "kicker": "Start here",
+    "title": "Simple, custom digital builds for businesses, founders, and new ideas.",
+    "copy": "Welcome to Zach Edwards LLC. Browse examples, request a website, app, or custom software project, get a real quote, and pay a deposit directly on the site. The goal is to keep the process clear so you always know what you are buying and what happens next.",
+    "explore_label": "Explore services",
+    "account_label": "Client account",
+    "updates_label": "Live updates",
+    "live_updates_url": "https://jarvas-auto-updates.netlify.app/"
+  },
+  "wall_items": [
+    {
+      "id": "ocean-study-i",
+      "title": "Web Design",
+      "price": "Websites",
+      "description": "Business websites, landing pages, portfolio sites, and service websites.",
+      "image": "/assets/web-design.png",
+      "frameClass": "frame-one",
+      "href": "/websites/?filter=websites"
+    },
+    {
+      "id": "ocean-study-ii",
+      "title": "Agentic AI",
+      "price": "AI Agents",
+      "description": "Monthly AI workers that can handle browser tasks, research, email help, and scheduled digital work.",
+      "image": "/assets/agentic-ai.png",
+      "frameClass": "frame-two",
+      "href": "/agents/"
+    },
+    {
+      "id": "coastal-study-iii",
+      "title": "Apps",
+      "price": "Apps",
+      "description": "App design and development for iOS, Google Play, and mobile-first products.",
+      "image": "/assets/apps.png",
+      "frameClass": "frame-three",
+      "href": "/websites/?filter=apps"
+    },
+    {
+      "id": "alpine-study-iv",
+      "title": "Smart Software",
+      "price": "Software",
+      "description": "Dashboards, portals, internal tools, and one-off custom systems.",
+      "image": "/assets/smart-software.png",
+      "frameClass": "frame-four",
+      "href": "/websites/?filter=software"
+    },
+    {
+      "id": "horizon-study-v",
+      "title": "Automated Investments",
+      "price": "Investments",
+      "description": "Investment-related tools and automated investing workflows.",
+      "image": "/assets/automated-investments.png",
+      "frameClass": "frame-five",
+      "href": "https://zinvestz.netlify.app/"
+    }
+  ],
+  "service_cards": [
+    {
+      "key": "websites",
+      "label": "Websites",
+      "copy": "See website examples, understand what is included, and request a website quote.",
+      "href": "/websites/?filter=websites",
+      "benchmark_note": "2025 benchmark: basic sites about $3.8k. Zach starts at $900."
+    },
+    {
+      "key": "agents",
+      "label": "AI Agents",
+      "copy": "See how the AI agent rental works, what it can do, and how pricing is structured.",
+      "href": "/agents/",
+      "benchmark_note": "2025 benchmark: many custom AI-agent builds start around $20k-$60k+. Zach starts at $60/mo."
+    },
+    {
+      "key": "apps",
+      "label": "Apps",
+      "copy": "See app examples and request a quote for an app build.",
+      "href": "/websites/?filter=apps",
+      "benchmark_note": "2025 benchmark: basic apps about $34k. Zach starts at $3.5k."
+    },
+    {
+      "key": "software",
+      "label": "Custom Software",
+      "copy": "Review custom software examples and request a quote for a tool or system.",
+      "href": "/create-project/?type=software",
+      "benchmark_note": "2025 benchmark: simple custom software about $35k. Zach starts at $2k."
+    },
+    {
+      "key": "investing",
+      "label": "Investing Tools",
+      "copy": "Open investing-related tools and projects.",
+      "href": "https://zinvestz.netlify.app/"
+    },
+    {
+      "key": "project",
+      "label": "Start a Project",
+      "copy": "Tell us what you want to build and we will route it to the right request path.",
+      "href": "/create-project/"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Deploy steps:
+1. Unzip this package if needed.
+2. In Netlify, use 'Add new site' -> 'Deploy manually'.
+3. Drag the CONTENTS of this folder, or drag this zip directly.
+4. Your publish directory is the root of this package.
+5. After deploy, complete the checklist in DEPLOY-CHECKLIST.md.

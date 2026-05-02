@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Create Project | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script defer src="/auth.js"></script>
+</head>
+<body class="request-page blue-theme create-project-page">
+  <main class="request-shell">
+    <div class="request-topbar">
+      <a class="back-link" href="/">← Back to wall</a>
+      <div class="request-auth">
+        <a class="secondary-chip" href="/websites/">Work gallery</a>
+        <a class="secondary-chip" href="/account/">Client account</a>
+        <div class="account-chip" data-account-chip>Remembered device</div>
+        <button class="secondary-chip" type="button" data-auth-open="login">Log in</button>
+        <button class="primary-chip" type="button" data-auth-open="signup">Create account</button>
+      </div>
+    </div>
+
+    <section class="request-hero request-hero-compact">
+      <div class="gallery-kicker">Create project</div>
+      <h1 class="gallery-title">One intake for web, app, or custom.</h1>
+      <p class="gallery-subtitle">Pick the project type, send the request, review the quote, then pay the deposit only if it looks right.</p>
+      <div class="feature-strip">
+        <div class="feature-pill">One intake</div>
+        <div class="feature-pill">Real quote</div>
+        <div class="feature-pill">Deposit after approval</div>
+      </div>
+    </section>
+
+    <section class="request-type-bar" role="tablist" aria-label="Project type">
+      <button class="request-type-pill is-active" type="button" data-project-type="website">Web</button>
+      <button class="request-type-pill" type="button" data-project-type="app">App</button>
+      <button class="request-type-pill" type="button" data-project-type="software">Custom</button>
+    </section>
+
+    <section class="request-layout request-layout-compact">
+      <form class="request-form request-form-compact" id="createProjectForm">
+        <input type="hidden" name="kind" id="projectKind" value="website">
+        <div class="request-section-label">Project details</div>
+        <div class="form-grid">
+          <label><span>Name</span><input name="name" autocomplete="name" required></label>
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+          <label><span>Project / business name</span><input name="business_name"></label>
+
+          <label class="type-group type-website">
+            <span>Business or personal</span>
+            <select name="audience_type">
+              <option value="">Select</option>
+              <option>Business</option>
+              <option>Personal brand</option>
+              <option>Side project</option>
+            </select>
+          </label>
+
+          <label class="type-group type-app">
+            <span>Platforms</span>
+            <select name="platforms">
+              <option value="">Select</option>
+              <option>iOS</option>
+              <option>Android</option>
+              <option>Both</option>
+              <option>Web app first</option>
+            </select>
+          </label>
+
+          <label class="type-group type-software">
+            <span>System type</span>
+            <select name="system_type">
+              <option value="">Select</option>
+              <option>Dashboard</option>
+              <option>Portal</option>
+              <option>Internal tool</option>
+              <option>Automation</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Main goal</span>
+            <input name="goal" placeholder="What should this help people do?">
+          </label>
+
+          <label class="type-group type-website">
+            <span>Timeline</span>
+            <select name="timeline">
+              <option>Flexible</option>
+              <option>ASAP</option>
+              <option>2-4 weeks</option>
+              <option>1-2 months</option>
+            </select>
+          </label>
+
+          <label class="type-group type-app type-software">
+            <span>Need accounts?</span>
+            <select name="auth_needed">
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </label>
+
+          <label class="type-group type-app type-software">
+            <span>Need payments?</span>
+            <select name="payments_needed">
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </label>
+
+          <label class="full type-group type-website">
+            <span>Pages needed</span>
+            <input name="pages_needed" placeholder="Home, About, Services, Contact">
+          </label>
+
+          <label class="full">
+            <span>Special features</span>
+            <input name="features" placeholder="Store, booking, AI, dashboard, voice, admin">
+          </label>
+
+          <label class="full">
+            <span>Describe the project</span>
+            <textarea name="project_summary" rows="6" required placeholder="Describe what you want built in plain language."></textarea>
+          </label>
+        </div>
+        <button class="request-submit" type="submit" id="createProjectSubmit">Get quote</button>
+      </form>
+
+      <aside class="quote-panel quote-panel-compact" id="createProjectResult">
+        <div class="quote-placeholder quote-placeholder-compact">
+          <h2>How it works</h2>
+          <div class="mini-steps">
+            <div class="mini-step"><strong>1</strong><span>Pick project type</span></div>
+            <div class="mini-step"><strong>2</strong><span>Send request</span></div>
+            <div class="mini-step"><strong>3</strong><span>Review quote, then approve deposit</span></div>
+          </div>
+          <p class="quote-note">Your quote details will update here after the request is reviewed.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script src="/create-project.js"></script>
+</body>
+</html>

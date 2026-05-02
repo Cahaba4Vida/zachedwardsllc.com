@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Project Setup | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/auth.js"></script>
+</head>
+<body class="request-page blue-theme">
+  <main class="request-shell">
+    <div class="request-topbar">
+      <a class="back-link" href="/account/">← Back to account</a>
+      <div class="request-auth">
+        <div class="account-chip" data-setup-project-chip>Project setup</div>
+        <button class="secondary-chip" type="button" data-auth-open="login">Log in</button>
+        <button class="primary-chip" type="button" data-auth-open="signup">Create account</button>
+      </div>
+    </div>
+
+    <section class="request-hero">
+      <div class="gallery-kicker">Project handoff</div>
+      <h1 class="gallery-title">Complete your project setup so the build can start cleanly.</h1>
+      <p class="gallery-subtitle">Use this handoff form to upload the core information, links, and assets we need after your deposit is paid. This reduces back-and-forth and keeps your project moving.</p>
+      <div class="feature-strip">
+        <div class="feature-pill">Brand / references</div>
+        <div class="feature-pill">Must-have features</div>
+        <div class="feature-pill">Content / assets</div>
+        <div class="feature-pill">Project kickoff details</div>
+      </div>
+    </section>
+
+    <section class="request-layout single-form-layout">
+      <form class="request-form" data-project-setup-form>
+        <div class="form-grid">
+          <label><span>Business or project name</span><input name="project_name" required></label>
+          <label><span>Primary contact</span><input name="primary_contact" autocomplete="name" required></label>
+          <label><span>Best email</span><input type="email" name="contact_email" autocomplete="email" required></label>
+          <label><span>Best phone</span><input name="contact_phone"></label>
+          <label class="full"><span>Brand / inspiration links</span><textarea name="references" rows="4" placeholder="Pinterest board, competitor sites, App Store links, visual references"></textarea></label>
+          <label class="full"><span>Must-have pages or features</span><textarea name="must_haves" rows="4" placeholder="Pages, logins, payments, admin dashboard, AI features, automations"></textarea></label>
+          <label class="full"><span>Assets you already have</span><textarea name="assets" rows="4" placeholder="Logo, copy, images, video, domain, app icon, brand guide"></textarea></label>
+          <label><span>Preferred timeline</span><input name="timeline"></label>
+          <label><span>Launch priority</span>
+            <select name="priority">
+              <option>Quality first</option>
+              <option>Balanced</option>
+              <option>Fastest reasonable launch</option>
+            </select>
+          </label>
+          <label class="full"><span>Anything else we should know?</span><textarea name="notes" rows="5"></textarea></label>
+        </div>
+        <button class="request-submit" type="submit">Save project setup</button>
+      </form>
+
+      <aside class="quote-panel" data-project-setup-result>
+        <div class="quote-placeholder">
+          <h2>What this does</h2>
+          <ol>
+            <li>Saves the exact inputs attached to your paid project.</li>
+            <li>Creates a cleaner kickoff handoff for Zach Edwards LLC.</li>
+            <li>Updates your project dashboard with setup completion.</li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script>window.ZEAuth.initIdentity(() => window.location.reload()); window.ZEAuth.bindAuthButtons(document);</script>
+  <script src="/project-setup.js"></script>
+</body>
+</html>

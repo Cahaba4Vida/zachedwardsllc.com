@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Live Preview | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/auth.js"></script>
+</head>
+<body class="gallery-page live-preview-page">
+  <main class="live-preview-shell">
+    <div class="live-preview-topbar">
+      <a class="back-link" href="/websites/">← Back to website wall</a>
+      <div class="live-preview-actions">
+        <a class="secondary-chip" id="livePreviewOpen" href="#" target="_blank" rel="noopener noreferrer">Open live site</a>
+      </div>
+    </div>
+
+    <section class="live-preview-hero">
+      <div class="gallery-kicker">Interactive preview</div>
+      <h1 class="live-preview-title" id="livePreviewTitle">Website preview</h1>
+      <p class="live-preview-copy" id="livePreviewCopy">Scroll through the live site here. This preview is isolated from the wall so it does not fight with horizontal scrolling.</p>
+    </section>
+
+    <section class="live-preview-frame-shell">
+      <iframe id="livePreviewFrame" class="live-preview-frame" title="Website live preview" loading="lazy"></iframe>
+    </section>
+  </main>
+
+  <script>
+    window.ZEAuth.initIdentity();
+
+    (function () {
+      const sites = {
+        nick: {
+          title: 'NickEdwardsOfficial.com',
+          url: 'https://nickedwardsofficial.com/',
+          copy: 'Scroll through the Nick Edwards site here in a safer live preview mode. Scripts are disabled in this preview so the video and trailer behavior cannot hijack the page.',
+          sandbox: 'allow-same-origin'
+        },
+        edwards: {
+          title: 'EdwardsHomeBuilders.com',
+          url: 'https://edwardshomebuilders.com/',
+          copy: 'Scroll through the Edwards Home Builders site here in a dedicated live preview page.',
+          sandbox: 'allow-same-origin'
+        }
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const key = params.get('site') || 'nick';
+      const site = sites[key] || sites.nick;
+
+      const frame = document.getElementById('livePreviewFrame');
+      document.getElementById('livePreviewTitle').textContent = site.title;
+      document.getElementById('livePreviewCopy').textContent = site.copy;
+      frame.setAttribute('sandbox', site.sandbox || 'allow-same-origin');
+      frame.src = site.url;
+      document.getElementById('livePreviewOpen').href = site.url;
+    })();
+  </script>
+</body>
+</html>

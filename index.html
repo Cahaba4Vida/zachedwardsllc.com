@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="home-page">
+  <div class="scene-bg" aria-hidden="true"></div>
+  <div class="scene-fade" aria-hidden="true"></div>
+  <div class="collection-mark">Zach Edwards LLC</div>
+
+  <div class="top-actions">
+    <a class="top-chip" href="/bio/">Bio</a>
+    <a class="top-chip" href="/account/">Account</a>
+    <a class="top-chip" href="/admin/" data-admin-only hidden>Admin</a>
+    <a class="top-chip" href="/login/?mode=login">Sign in</a>
+    <a class="top-chip top-chip-solid" href="/login/?mode=signup">Create account</a>
+  </div>
+
+<div id="wallScroll" class="wall-scroll">
+    <div id="wallTrack" class="wall-track"></div>
+  </div>
+
+  <div class="edge-fade left" aria-hidden="true"></div>
+  <div class="edge-fade right" aria-hidden="true"></div>
+  <a class="live-updates-button" href="https://jarvas-auto-updates.netlify.app/" rel="noopener noreferrer" data-live-updates-link>Zach Edwards LLC live updates</a>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/auth.js"></script>
+  <script>
+    window.ZEAuth.initIdentity((eventType, user) => {
+      if (eventType === 'logout') {
+        try { localStorage.removeItem('__ze_home_authenticated__'); } catch {}
+      }
+      if (user) {
+        try {
+          localStorage.setItem('__ze_home_authenticated__', '1');
+          localStorage.setItem('__ze_last_known_user__', '1');
+        } catch {}
+      }
+    });
+  </script>
+  <script src="/script.js"></script>
+
+  <aside class="contact-dock" aria-label="Contact Zach Edwards LLC">
+    <p class="contact-dock-title">Contact</p>
+    <div class="contact-dock-grid">
+      <div class="contact-dock-row">
+        <a class="contact-dock-link is-accent" href="https://instagram.com/zachedwardsllc" target="_blank" rel="noopener noreferrer">Instagram @zachedwardsllc</a>
+        <a class="contact-dock-link" href="https://zachedwardsllc.com" target="_blank" rel="noopener noreferrer">zachedwardsllc.com</a>
+      </div>
+      <div class="contact-dock-row">
+        <a class="contact-dock-link" href="tel:+12084902357">(208) 490-2357</a>
+        <span class="contact-dock-chip">Logan, Utah based</span>
+      </div>
+    </div>
+  </aside>
+
+</body>
+</html>

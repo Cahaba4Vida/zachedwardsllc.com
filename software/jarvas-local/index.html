@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jarvas Desktop for Windows | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/auth.js"></script>
+</head>
+<body class="aethon-showcase-page">
+  <div class="aethon-slideshow" aria-hidden="true">
+    <div class="aethon-slide is-active" style="background-image:url('/assets/jarvas-local/background.png')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/jarvas/slide-1-ssd.png')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/jarvas/slide-2-flash.png')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/jarvas/slide-3-dashboard.png')"></div>
+  </div>
+  <div class="aethon-overlay"></div>
+
+  <a class="back-link aethon-back" href="/websites/?filter=software">← Back to smart software</a>
+
+  <main class="aethon-shell">
+    <div class="aethon-badge">Jarvas Desktop</div>
+    <section class="aethon-copy-card">
+      <div class="gallery-kicker">Local Windows install</div>
+      <h1 class="aethon-title">Jarvas Desktop for Windows</h1>
+      <p class="aethon-subtitle">Choose between the premium SSD setup, the lower-cost flash-drive setup, or the bring-your-own-drive Windows download. Each option is framed around private local AI that works completely offline for remote work, travel, and private use once installed.</p>
+      <p style="margin:12px 0 0; color:rgba(255,255,255,.68); font-size:.94rem; line-height:1.6;">Payments are now routed through a dedicated checkout page with fixed pricing for the SSD, flash drive, or bring-your-own-drive install package.</p>
+      <div class="gallery-actions" style="margin-top:18px; gap:12px; flex-wrap:wrap;">
+        <a class="aethon-open-button" href="/software/jarvas-local/unlock/">Choose setup / buy</a>
+        <a class="secondary-chip" href="https://jarvas-fullspec.netlify.app/" target="_blank" rel="noopener noreferrer">Open web app</a>
+      </div>
+
+      <style>
+        .jarvas-preview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+        .jarvas-preview-card{padding:16px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:grid;gap:12px}
+        .jarvas-preview-kicker{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.56)}
+        .jarvas-preview-title{margin:0;font-size:1.08rem;color:#fff}
+        .jarvas-preview-video-wrap{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#020617}
+        .jarvas-preview-video-wrap video{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#020617}
+        .jarvas-preview-tag{position:absolute;left:10px;top:10px;padding:7px 10px;border-radius:999px;background:rgba(2,6,23,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+        .jarvas-preview-copy{margin:0;color:rgba(255,255,255,.72);font-size:.93rem;line-height:1.65}
+        @media (max-width:820px){.jarvas-preview-grid{grid-template-columns:1fr}}
+      </style>
+      <div class="jarvas-preview-grid" aria-label="Portable AI previews">
+        <article class="jarvas-preview-card">
+          <div class="jarvas-preview-kicker">Premium setup</div>
+          <h2 class="jarvas-preview-title">Portable AI SSD preview</h2>
+          <div class="jarvas-preview-video-wrap">
+            <span class="jarvas-preview-tag">Works offline</span>
+            <video controls playsinline preload="none" poster="/assets/portable-ai-ssd-preview.png">
+              <source src="/assets/jarvas-local/portable-offline-demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="jarvas-preview-copy">A quick look at the offline Jarvas flow for the SSD version, positioned around remote work, private local use, and a cleaner premium handoff.</p>
+        </article>
+        <article class="jarvas-preview-card">
+          <div class="jarvas-preview-kicker">Compact setup</div>
+          <h2 class="jarvas-preview-title">Portable AI flash preview</h2>
+          <div class="jarvas-preview-video-wrap">
+            <span class="jarvas-preview-tag">Offline demo</span>
+            <video controls playsinline preload="none" poster="/assets/portable-ai-flash-preview.png">
+              <source src="/assets/jarvas-local/portable-offline-demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="jarvas-preview-copy">The same local Jarvas concept framed as the lower-cost flash-drive version for buyers who want the smallest hardware footprint and still want offline use.</p>
+        </article>
+      </div>
+      <div style="margin-top:18px; display:grid; gap:10px; color:rgba(255,255,255,.78); font-size:.96rem; line-height:1.7;">
+        <div><strong style="color:#fff;">What users need:</strong> Windows 10 22H2+ and Python 3.11+. This build starts its own private Ollama runtime, so users do not need to preinstall the Ollama app.</div>
+        <div><strong style="color:#fff;">Quick start:</strong> Unzip the download, then double-click <code style="font-family:inherit; background:rgba(255,255,255,.08); padding:.12rem .4rem; border-radius:.45rem;">Jarvas-Install-and-Run.bat</code>. On the first run it will reuse any shared cache already on the machine, or download the required Ollama runtime/model once if needed.</div>
+        <div><strong style="color:#fff;">Offline note:</strong> Once the bundle is installed, the intended use case is completely offline local AI for remote work and private use. The only exception is a first-run fetch if the shared runtime/model is not already cached on that machine.</div>
+        <div><a href="/downloads/jarvas/README.txt" style="color:#dbeafe; text-decoration:underline; text-underline-offset:3px;">View install notes</a></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.ZEAuth.initIdentity();
+  </script>
+  <script src="/aethon-showcase.js"></script>
+
+  <aside class="contact-dock" aria-label="Contact Zach Edwards LLC">
+    <p class="contact-dock-title">Contact</p>
+    <div class="contact-dock-grid">
+      <div class="contact-dock-row">
+        <a class="contact-dock-link is-accent" href="https://instagram.com/zachedwardsllc" target="_blank" rel="noopener noreferrer">Instagram @zachedwardsllc</a>
+        <a class="contact-dock-link" href="https://zachedwardsllc.com" target="_blank" rel="noopener noreferrer">zachedwardsllc.com</a>
+      </div>
+      <div class="contact-dock-row">
+        <a class="contact-dock-link" href="tel:+12084902357">(208) 490-2357</a>
+        <span class="contact-dock-chip">Logan, Utah based</span>
+      </div>
+    </div>
+  </aside>
+
+</body>
+</html>

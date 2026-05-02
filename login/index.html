@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign in | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="gallery-page">
+  <main class="gallery-shell auth-page-shell">
+    <a class="back-link" href="/">← Back to home</a>
+
+    <section class="gallery-hero auth-hero">
+      <div class="gallery-kicker">Account</div>
+      <h1 class="gallery-title">Sign in or create your account.</h1>
+      <p class="gallery-subtitle">Use this page to sign in first, then you will be sent straight back to the site.</p>
+
+      <div class="gallery-actions">
+        <button class="primary-chip" type="button" id="loginBtn">Sign in</button>
+        <button class="secondary-chip" type="button" id="signupBtn">Create account</button>
+      </div>
+
+      <div class="feature-strip">
+        <div class="feature-pill">Separate login flow</div>
+        <div class="feature-pill">Returns to home after auth</div>
+        <div class="feature-pill">No onboarding</div>
+      </div>
+
+      <p class="subtle-copy" id="authStatus">Loading secure sign-in…</p>
+    </section>
+  </main>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/auth.js"></script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const mode = params.get('mode') === 'signup' ? 'signup' : 'login';
+      const next = params.get('next') || '/';
+      const status = document.getElementById('authStatus');
+      const loginBtn = document.getElementById('loginBtn');
+      const signupBtn = document.getElementById('signupBtn');
+
+      function markAuthenticated() {
+        try {
+          localStorage.setItem('__ze_home_authenticated__', '1');
+          localStorage.setItem('__ze_last_known_user__', '1');
+        } catch {}
+      }
+
+      async function recordProfileIfPossible() {
+        try {
+          if (window.ZEAuth && window.ZEAuth.whoAmI) {
+            await window.ZEAuth.whoAmI(true);
+          }
+        } catch {}
+      }
+
+      async function finish(target) {
+        markAuthenticated();
+        await recordProfileIfPossible();
+        window.location.assign(target || '/');
+      }
+
+      function setStatus(message) {
+        status.textContent = message;
+      }
+
+      function attachIdentityHandlers(ni) {
+        ni.on('init', async (user) => {
+          if (user) {
+            setStatus('Account detected. Redirecting…');
+            await finish(next);
+            return;
+          }
+          setStatus(mode === 'signup' ? 'Create your account to continue.' : 'Sign in to continue.');
+        });
+
+        ni.on('login', async () => {
+          setStatus('Signed in. Redirecting…');
+          try { ni.close(); } catch {}
+          await finish(next);
+        });
+
+        ni.on('signup', () => {
+          setStatus('Account created. Complete the secure flow to continue.');
+        });
+
+        ni.on('error', (err) => {
+          setStatus((err && err.message) ? err.message : 'Unable to open sign-in right now.');
+        });
+      }
+
+      function openIdentity(ni, desiredMode) {
+        setStatus(desiredMode === 'signup' ? 'Create your account to continue.' : 'Sign in to continue.');
+        try {
+          ni.open(desiredMode);
+        } catch (err) {
+          setStatus('Unable to open sign-in right now. Refresh and try again.');
+        }
+      }
+
+      function bindButtons(ni) {
+        loginBtn.addEventListener('click', () => openIdentity(ni, 'login'));
+        signupBtn.addEventListener('click', () => openIdentity(ni, 'signup'));
+      }
+
+      function waitForIdentity() {
+        let attempts = 0;
+        const maxAttempts = 80;
+        const timer = window.setInterval(() => {
+          attempts += 1;
+          const ni = window.netlifyIdentity;
+          if (ni) {
+            window.clearInterval(timer);
+            try { ni.init(); } catch {}
+            attachIdentityHandlers(ni);
+            bindButtons(ni);
+            window.setTimeout(() => openIdentity(ni, mode), 250);
+            return;
+          }
+
+          if (attempts >= maxAttempts) {
+            window.clearInterval(timer);
+            setStatus('Netlify Identity did not load. Refresh and try again.');
+          }
+        }, 100);
+      }
+
+      waitForIdentity();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ocean-study-i",
+    "title": "Web Design",
+    "price": "Websites",
+    "description": "Business websites, landing pages, portfolio sites, and service websites.",
+    "image": "/assets/web-design.png",
+    "frameClass": "frame-one",
+    "href": "/websites/?filter=websites"
+  },
+  {
+    "id": "ocean-study-ii",
+    "title": "Agentic AI",
+    "price": "AI Agents",
+    "description": "Monthly AI workers that can handle browser tasks, research, email help, and scheduled digital work.",
+    "image": "/assets/agentic-ai.png",
+    "frameClass": "frame-two",
+    "href": "/agents/"
+  },
+  {
+    "id": "coastal-study-iii",
+    "title": "Apps",
+    "price": "Apps",
+    "description": "App design and development for iOS, Google Play, and mobile-first products.",
+    "image": "/assets/apps.png",
+    "frameClass": "frame-three",
+    "href": "/websites/?filter=apps"
+  },
+  {
+    "id": "alpine-study-iv",
+    "title": "Smart Software",
+    "price": "Software",
+    "description": "Dashboards, portals, internal tools, and one-off custom systems.",
+    "image": "/assets/smart-software.png",
+    "frameClass": "frame-four",
+    "href": "/websites/?filter=software"
+  },
+  {
+    "id": "horizon-study-v",
+    "title": "Automated Investments",
+    "price": "Investments",
+    "description": "Investment-related tools and automated investing workflows.",
+    "image": "/assets/automated-investments.png",
+    "frameClass": "frame-five",
+    "href": "https://zinvestz.netlify.app/"
+  }
+]

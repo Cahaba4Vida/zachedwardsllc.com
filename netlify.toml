@@ -1,0 +1,33 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/account"
+  to = "/account/"
+  status = 301
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 301
+
+[[redirects]]
+  from = "/request-website"
+  to = "/request-website/"
+  status = 301
+
+[[redirects]]
+  from = "/request-app"
+  to = "/request-app/"
+  status = 301
+
+[[redirects]]
+  from = "/project-setup"
+  to = "/project-setup/"
+  status = 301
+
+[[redirects]]
+  from = "/request-software"
+  to = "/request-software/"
+  status = 301

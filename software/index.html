@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Software | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .software-float-page{
+      overflow-x:hidden;
+      overflow-y:auto;
+      background:#efede9;
+    }
+    .software-float-page .scene-bg{
+      position:fixed;
+    }
+    .software-float-page .scene-fade{
+      position:fixed;
+    }
+    .software-float-shell{
+      position:relative;
+      z-index:12;
+      max-width:1440px;
+      margin:0 auto;
+      padding:96px 28px 34px;
+    }
+    .software-dock,
+    .software-bottom-dock,
+    .software-panel{
+      border:1px solid rgba(20,50,100,.08);
+      box-shadow:0 24px 60px rgba(16,36,72,.10);
+      backdrop-filter:blur(14px);
+    }
+    .software-dock,
+    .software-bottom-dock{
+      border-radius:34px;
+      background:rgba(255,255,255,.76);
+    }
+    .software-dock{
+      display:grid;
+      gap:22px;
+      padding:28px;
+      margin-bottom:26px;
+    }
+    .software-dock-grid{
+      display:grid;
+      gap:18px;
+    }
+    .software-dock-copy{
+      display:grid;
+      gap:14px;
+    }
+    .software-kicker{
+      display:inline-flex;
+      width:fit-content;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:0 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(20,50,100,.08);
+      box-shadow:0 8px 22px rgba(16,36,72,.06);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:#49689f;
+    }
+    .software-dock-title{
+      margin:0;
+      font-size:clamp(2.2rem, 5vw, 4.8rem);
+      line-height:.96;
+      letter-spacing:-.04em;
+      color:#102448;
+      max-width:940px;
+    }
+    .software-dock-subtitle{
+      margin:0;
+      max-width:860px;
+      font-size:1.03rem;
+      line-height:1.78;
+      color:rgba(16,36,72,.66);
+    }
+    .software-pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .software-mini-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:38px;
+      padding:0 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(20,50,100,.08);
+      color:#17305d;
+      font-size:13px;
+      font-weight:600;
+      box-shadow:0 10px 22px rgba(16,36,72,.05);
+    }
+    .software-summary-stack{
+      display:grid;
+      gap:14px;
+    }
+    .software-summary-card{
+      border-radius:24px;
+      padding:20px 20px 18px;
+      background:linear-gradient(180deg, rgba(20,45,97,.96), rgba(38,81,163,.94));
+      color:#fff;
+      min-height:100%;
+    }
+    .software-summary-card span{
+      display:block;
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.70);
+    }
+    .software-summary-card strong{
+      display:block;
+      margin-top:12px;
+      font-size:1.2rem;
+      line-height:1.25;
+    }
+    .software-summary-card p{
+      margin:10px 0 0;
+      line-height:1.72;
+      color:rgba(255,255,255,.84);
+    }
+    .software-stage{
+      position:relative;
+      min-height:1040px;
+      margin:0 auto 26px;
+    }
+    .software-panel{
+      position:absolute;
+      width:min(100%, 360px);
+      overflow:hidden;
+      border-radius:34px;
+      background:rgba(255,255,255,.90);
+    }
+    .software-panel .project-body{
+      padding:24px 24px 26px;
+    }
+    .software-panel .project-name{
+      font-size:1.16rem;
+    }
+    .software-panel .project-copy{
+      font-size:.98rem;
+      line-height:1.82;
+    }
+    .software-panel .project-type{
+      color:rgba(16,36,72,.42);
+    }
+    .software-panel-1{ left:3%; top:32px; transform:rotate(-5deg); }
+    .software-panel-2{ right:6%; top:72px; transform:rotate(4deg); }
+    .software-panel-3{ left:11%; bottom:86px; transform:rotate(-2.5deg); }
+    .software-panel-4{ right:12%; bottom:54px; transform:rotate(3deg); }
+    .software-panel::after{
+      content:'';
+      position:absolute;
+      inset:auto 0 0 0;
+      height:90px;
+      background:linear-gradient(to top, rgba(255,255,255,.14), transparent);
+      pointer-events:none;
+    }
+    .software-thumb-ai{background:linear-gradient(135deg, #0f172a, #1d4ed8 56%, #38bdf8 100%);}
+    .software-thumb-app{background:linear-gradient(135deg, #fff7ed, #fbbf24 40%, #fb7185 100%);}
+    .software-thumb-ops{background:linear-gradient(135deg, #f8fafc, #cbd5e1 50%, #94a3b8 100%);}
+    .software-thumb-portal{background:linear-gradient(135deg, #eef2ff, #a5b4fc 46%, #312e81 100%);}
+    .software-thumb-chip,
+    .software-thumb-bar,
+    .software-thumb-card,
+    .software-thumb-phone,
+    .software-thumb-node,
+    .software-thumb-panel{
+      position:absolute;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(8px);
+    }
+    .software-thumb-chip{inset:26px auto auto 26px; width:132px; height:96px;}
+    .software-thumb-bar{inset:26px 26px auto 176px; height:24px;}
+    .software-thumb-card{inset:auto 26px 28px 26px; height:104px;}
+    .software-thumb-phone{inset:28px 30px 28px auto; width:132px; border-radius:30px;}
+    .software-thumb-node{width:78px; height:78px; border-radius:999px;}
+    .software-thumb-node.one{top:34px; left:34px;}
+    .software-thumb-node.two{top:118px; left:134px;}
+    .software-thumb-node.three{top:48px; right:48px;}
+    .software-thumb-node.four{bottom:32px; left:90px;}
+    .software-thumb-panel{inset:34px 28px 34px 28px;}
+    .software-thumb-line,
+    .software-thumb-line::before,
+    .software-thumb-line::after{
+      content:'';
+      position:absolute;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.36);
+    }
+    .software-thumb-line{left:30px; right:66px; top:34px;}
+    .software-thumb-line::before{left:0; right:-24px; top:34px;}
+    .software-thumb-line::after{left:0; right:40px; top:68px;}
+    .software-bottom-dock{
+      display:grid;
+      gap:20px;
+      padding:28px;
+      margin-bottom:18px;
+    }
+    .software-bottom-grid{
+      display:grid;
+      gap:18px;
+    }
+    .software-bottom-dock h2{
+      margin:0 0 12px;
+      font-size:1.9rem;
+      line-height:1.04;
+      color:#102448;
+    }
+    .software-bottom-dock p,
+    .software-bottom-dock li{
+      color:rgba(16,36,72,.66);
+      line-height:1.8;
+    }
+    .software-bottom-dock .info-card{
+      background:rgba(255,255,255,.68);
+      backdrop-filter:blur(10px);
+    }
+    .software-bottom-note{
+      display:grid;
+      gap:14px;
+    }
+    .software-bottom-note .code-snippet{
+      margin:0;
+      background:#09111f;
+      color:#f8fafc;
+      font-size:.96rem;
+    }
+    .software-panel-shadow{
+      position:absolute;
+      inset:auto auto 0 0;
+      width:260px;
+      height:42px;
+      border-radius:999px;
+      background:rgba(16,36,72,.08);
+      filter:blur(18px);
+      z-index:0;
+    }
+    .software-shadow-1{ left:8%; top:430px; }
+    .software-shadow-2{ right:10%; top:450px; }
+    .software-shadow-3{ left:16%; bottom:40px; }
+    .software-shadow-4{ right:18%; bottom:18px; }
+    @media (min-width: 980px){
+      .software-dock-grid,
+      .software-bottom-grid{
+        grid-template-columns:minmax(0, 1.25fr) minmax(320px, .75fr);
+        align-items:start;
+      }
+    }
+    @media (max-width: 1190px){
+      .software-stage{
+        min-height:980px;
+      }
+      .software-panel{
+        width:min(100%, 328px);
+      }
+      .software-panel-1{ left:0; }
+      .software-panel-2{ right:0; }
+      .software-panel-3{ left:6%; }
+      .software-panel-4{ right:6%; }
+    }
+    @media (max-width: 900px){
+      .software-float-shell{
+        padding:84px 16px 28px;
+      }
+      .software-stage{
+        min-height:0;
+        display:grid;
+        gap:16px;
+      }
+      .software-panel,
+      .software-panel-shadow{
+        position:relative;
+        left:auto !important;
+        right:auto !important;
+        top:auto !important;
+        bottom:auto !important;
+        width:100%;
+        transform:none !important;
+      }
+      .software-panel-shadow{
+        display:none;
+      }
+      .software-dock,
+      .software-bottom-dock{
+        padding:20px 18px;
+        border-radius:26px;
+      }
+      .software-dock-title{
+        font-size:clamp(2rem, 10vw, 3rem);
+      }
+      .software-bottom-dock h2{
+        font-size:1.52rem;
+      }
+      .page-chip-link{
+        right:16px;
+        top:16px;
+      }
+      .webgallery-back{
+        top:16px;
+        left:16px;
+      }
+    }
+  </style>
+</head>
+<body class="home-page software-float-page">
+  <div class="scene-bg webgallery-scene-bg" aria-hidden="true"></div>
+  <div class="scene-fade webgallery-scene-fade" aria-hidden="true"></div>
+  <div class="webgallery-center-mark" aria-hidden="true">Zach Edwards LLC</div>
+
+  <a class="back-link webgallery-back" href="/">← Back to wall</a>
+  <a class="secondary-chip page-chip-link" href="/create-project/?type=software">Create project</a>
+
+  <main class="software-float-shell">
+    <section class="software-dock">
+      <div class="software-dock-grid">
+        <div class="software-dock-copy">
+          <div class="software-kicker">Smart Software</div>
+          <h1 class="software-dock-title">The software lane for products, dashboards, automations, and portable AI systems.</h1>
+          <p class="software-dock-subtitle">This page now matches the floating-gallery feel of the app and web pages. It frames smart software as a product lane: portable AI kits, companion web apps, operator systems, dashboards, portals, and other tools with real logic behind them.</p>
+          <div class="gallery-actions">
+            <a class="primary-chip" href="/create-project/?type=software">Start a software project</a>
+            <a class="secondary-chip" href="/legal/">Read terms</a>
+          </div>
+          <div class="software-pill-row">
+            <div class="software-mini-pill">Portable AI</div>
+            <div class="software-mini-pill">Companion web app</div>
+            <div class="software-mini-pill">Dashboards</div>
+            <div class="software-mini-pill">Automations</div>
+            <div class="software-mini-pill">Client portals</div>
+          </div>
+        </div>
+        <div class="software-summary-stack">
+          <article class="software-summary-card">
+            <span>Current direction</span>
+            <strong>Hardware plus software plus experience is the stronger product.</strong>
+            <p>Your AI-on-a-drive offer gets much more valuable once it has a companion app layer for onboarding, downloads, model flow, updates, and cleaner control.</p>
+          </article>
+          <article class="info-card">
+            <h2>Best fit</h2>
+            <p>Use this lane when it needs logins, workflows, logic, uploads, dashboards, AI features, or a polished front end wrapped around a real system.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="software-stage" aria-label="Smart software lanes">
+      <div class="software-panel-shadow software-shadow-1" aria-hidden="true"></div>
+      <div class="software-panel-shadow software-shadow-2" aria-hidden="true"></div>
+      <div class="software-panel-shadow software-shadow-3" aria-hidden="true"></div>
+      <div class="software-panel-shadow software-shadow-4" aria-hidden="true"></div>
+
+      <article class="project-card software-panel software-panel-1">
+        <div class="project-thumb software-thumb-ai software-thumb-has-image">
+          <img class="software-thumb-image" src="/assets/portable-ai-ssd-preview.png" alt="Portable AI SSD preview">
+          <div class="software-thumb-scrim"></div>
+          <div class="software-thumb-chip"></div>
+          <div class="software-thumb-bar"></div>
+          <div class="software-thumb-card"></div>
+          <div class="thumb-overlay"><span class="thumb-badge">Portable AI product</span><span class="thumb-badge">Offline-first</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Product concept</div>
+          <h2 class="project-name">Portable AI Kit</h2>
+          <p class="project-copy">A local AI setup that runs from a drive, launches cleanly, and is positioned for completely offline remote work, travel, and private use.</p>
+          <div class="gallery-actions" style="margin-top:16px;"><a class="secondary-chip" href="/software/jarvas-local/unlock/">Buy offline AI</a></div>
+        </div>
+      </article>
+
+      <article class="project-card software-panel software-panel-2">
+        <div class="project-thumb software-thumb-companion software-thumb-has-image">
+          <img class="software-thumb-image" src="/assets/jarvas-local/background.png" alt="AI companion app preview">
+          <div class="software-thumb-scrim"></div>
+          <div class="software-thumb-phone"></div>
+          <div class="software-thumb-card" style="left:24px; right:176px; top:30px; bottom:auto; height:78px;"></div>
+          <div class="thumb-overlay"><span class="thumb-badge">Windows install</span><span class="thumb-badge">Local desktop</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Jarvas desktop</div>
+          <h2 class="project-name">Jarvas Desktop for Windows</h2>
+          <p class="project-copy">A local Windows Jarvas package with a quick batch installer, local Ollama support, image attachments, chat, and a built-in coding workspace.</p>
+          <div class="gallery-actions" style="margin-top:16px;"><a class="secondary-chip" href="/software/jarvas-local/">Install for Windows</a></div>
+        </div>
+      </article>
+
+      <article class="project-card software-panel software-panel-3">
+        <div class="project-thumb software-thumb-flash software-thumb-has-image">
+          <img class="software-thumb-image" src="/assets/portable-ai-flash-preview.png" alt="Portable AI flash drive preview">
+          <div class="software-thumb-scrim"></div>
+          <div class="software-thumb-node one"></div>
+          <div class="software-thumb-node two"></div>
+          <div class="software-thumb-node three"></div>
+          <div class="software-thumb-node four"></div>
+          <div class="thumb-overlay"><span class="thumb-badge">Flash drive</span><span class="thumb-badge">Portable</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Portable AI</div>
+          <h2 class="project-name">Portable AI Flash Drive</h2>
+          <p class="project-copy">A lower-cost portable AI version built around a small model and simple handoff, giving you a cleaner entry-tier offer for buyers who want offline AI without the bigger SSD setup.</p>
+          <div class="gallery-actions" style="margin-top:16px;"><a class="secondary-chip" href="/software/jarvas-local/unlock/">See pricing</a></div>
+        </div>
+      </article>
+
+      <article class="project-card software-panel software-panel-4">
+        <div class="project-thumb software-thumb-portal software-thumb-has-image">
+          <img class="software-thumb-image" src="/assets/admin-support-dashboard-preview.png" alt="Admin and support dashboard preview">
+          <div class="software-thumb-scrim"></div>
+          <div class="software-thumb-panel">
+            <div class="software-thumb-line"></div>
+          </div>
+          <div class="thumb-overlay"><span class="thumb-badge">Portal</span><span class="thumb-badge">Dashboards</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Client-facing software</div>
+          <h2 class="project-name">Dashboards, Portals, and Admin Panels</h2>
+          <p class="project-copy">Use this lane for member areas, customer-facing software, internal dashboards, or any tool where users need accounts, data views, and real workflow control.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="software-bottom-dock">
+      <div class="software-bottom-grid">
+        <article class="info-card">
+          <h2>How the portable AI angle fits here</h2>
+          <p>Your next web app strengthens the whole offer. It turns the portable AI setup into hardware plus software plus user experience.</p>
+          <ul class="project-list">
+            <li>Local AI on a drive for private and offline use</li>
+            <li>Companion app for onboarding, model flow, updates, and support</li>
+            <li>Optional accounts, payments, and delivery logic</li>
+            <li>Admin controls for rollout, support, and future versions</li>
+          </ul>
+        </article>
+
+        <div class="software-bottom-note">
+          <div class="code-snippet">const smartSoftwareOffer = {
+  hardware: 'portable-ai-drive',
+  frontend: 'companion-web-app',
+  backend: ['accounts', 'payments', 'admin-tools'],
+  result: 'a cleaner product with better resale value'
+};</div>
+          <article class="info-card">
+            <h2>Why this page works better now</h2>
+            <p>It matches the app and web pages visually while keeping the smart software lane broad enough for systems and specific enough for product ideas that can scale into real platforms.</p>
+            <div class="gallery-actions" style="margin-top:16px;">
+              <a class="primary-chip" href="/create-project/?type=software">Request smart software</a>
+              <a class="secondary-chip" href="/websites/?filter=apps">View app gallery</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="contact-dock" aria-label="Contact Zach Edwards LLC">
+    <p class="contact-dock-title">Contact</p>
+    <div class="contact-dock-grid">
+      <div class="contact-dock-row">
+        <a class="contact-dock-link is-accent" href="https://instagram.com/zachedwardsllc" target="_blank" rel="noopener noreferrer">Instagram @zachedwardsllc</a>
+        <a class="contact-dock-link" href="https://zachedwardsllc.com" target="_blank" rel="noopener noreferrer">zachedwardsllc.com</a>
+      </div>
+      <div class="contact-dock-row">
+        <a class="contact-dock-link" href="tel:+12084902357">(208) 490-2357</a>
+        <span class="contact-dock-chip">Logan, Utah based</span>
+      </div>
+    </div>
+  </aside>
+
+</body>
+</html>
