@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aethon Fuel | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/auth.js"></script>
+</head>
+<body class="aethon-showcase-page">
+  <div class="aethon-slideshow" aria-hidden="true">
+    <div class="aethon-slide is-active" style="background-image:url('/assets/aethon/slide-1.jpg')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/aethon/slide-2.jpg')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/aethon/slide-3.jpg')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/aethon/slide-4.jpg')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/aethon/slide-5.jpg')"></div>
+    <div class="aethon-slide" style="background-image:url('/assets/aethon/slide-6.jpg')"></div>
+  </div>
+  <div class="aethon-overlay"></div>
+
+  <a class="back-link aethon-back" href="/apps/">← Back to applications</a>
+
+  <main class="aethon-shell">
+    <div class="aethon-badge">Aethon Fuel</div>
+    <section class="aethon-copy-card">
+      <div class="gallery-kicker">Voice-first fitness</div>
+      <h1 class="aethon-title">Aethon Fuel</h1>
+      <p class="aethon-subtitle">Log by voice. Coach by voice. Autopilot built in. This page rotates through the current Aethon creative while keeping one subtle path into the live web app.</p>
+      <a class="aethon-open-button" href="https://aethon-fuel.netlify.app/" target="_blank" rel="noopener noreferrer">Open app</a>
+    </section>
+  </main>
+
+  <script>
+    window.ZEAuth.initIdentity();
+  </script>
+  <script src="/aethon-showcase.js"></script>
+</body>
+</html>

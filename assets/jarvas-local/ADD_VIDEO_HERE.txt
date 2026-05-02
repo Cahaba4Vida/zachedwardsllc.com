@@ -1,0 +1,10 @@
+Place your video file in this folder with this exact name:
+
+portable-offline-demo.mp4
+
+Expected path:
+/assets/jarvas-local/portable-offline-demo.mp4
+
+This powers the SSD and Flash Drive preview videos on:
+- /software/jarvas-local/
+- /software/jarvas-local/unlock/

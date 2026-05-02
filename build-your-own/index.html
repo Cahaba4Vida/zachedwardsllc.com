@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Your Own Website / Web App | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;700;800&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">Z</div>
+        <div>
+          <div class="eyebrow">ZachEdwardsLLC</div>
+          <h1>Manual Webbuilder</h1>
+        </div>
+      </div>
+
+      <div class="topbar-controls">
+        <select id="siteSelect" class="input compact"></select>
+        <button id="newSiteBtn" class="btn secondary">New</button>
+        <button id="duplicateSiteBtn" class="btn ghost">Duplicate</button>
+        <button id="saveBtn" class="btn primary">Save</button>
+        <button id="exportBtn" class="btn secondary">Finalize / Export</button>
+        <button id="previewBtn" class="btn ghost">Preview</button>
+        <div class="device-toggle">
+          <button class="device-btn active" data-device="desktop">Desktop</button>
+          <button class="device-btn" data-device="tablet">Tablet</button>
+          <button class="device-btn" data-device="mobile">Phone</button>
+        </div>
+        <button id="loginBtn" class="btn ghost">Log in</button>
+        <button id="logoutBtn" class="btn ghost hidden">Log out</button>
+      </div>
+    </header>
+
+    <div class="subbar">
+      <div id="userStatus">Local mode</div>
+      <div id="saveStatus">Changes stored in your browser until you connect Netlify Identity + Neon.</div>
+    </div>
+
+    <div class="workspace">
+      <aside class="panel left-panel">
+        <section class="panel-card panel-shell">
+          <div class="section-title-row">
+            <h2>Builder tools</h2>
+            <span class="pill">Organized</span>
+          </div>
+          <div class="panel-tabs">
+            <button class="panel-tab active" data-panel-tab="templates">Templates</button>
+            <button class="panel-tab" data-panel-tab="pages">Pages</button>
+            <button class="panel-tab" data-panel-tab="blocks">Blocks</button>
+            <button class="panel-tab" data-panel-tab="assets">Assets</button>
+          </div>
+          <div class="panel-scroll">
+            <div class="tab-panel active" data-panel-view="templates">
+              <div class="section-title-row compact-row">
+                <h2>Templates</h2>
+                <span class="pill">Starter</span>
+              </div>
+              <div id="templateGrid" class="template-grid"></div>
+            </div>
+
+            <div class="tab-panel" data-panel-view="pages">
+              <div class="section-title-row compact-row">
+                <h2>Pages</h2>
+                <button id="addPageBtn" class="text-btn">+ Add</button>
+              </div>
+              <div id="pageList" class="stack gap-sm"></div>
+            </div>
+
+            <div class="tab-panel" data-panel-view="blocks">
+              <div class="section-title-row compact-row">
+                <h2>Add blocks</h2>
+              </div>
+              <div class="block-grid">
+                <button class="tool-btn" data-add="text">Text</button>
+                <button class="tool-btn" data-add="heading">Heading</button>
+                <button class="tool-btn" data-add="image">Image</button>
+                <button class="tool-btn" data-add="video">Video</button>
+                <button class="tool-btn" data-add="button">Button</button>
+                <button class="tool-btn" data-add="box">Box</button>
+                <button class="tool-btn" data-add="form">Form</button>
+              </div>
+            </div>
+
+            <div class="tab-panel" data-panel-view="assets">
+              <div class="section-title-row compact-row">
+                <h2>Assets</h2>
+                <label class="text-btn" for="assetUpload">+ Upload</label>
+                <input id="assetUpload" type="file" accept="image/*,video/*" multiple hidden />
+              </div>
+              <div id="assetGrid" class="asset-grid"></div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <main class="canvas-area">
+        <div id="canvasIntro" class="empty-state hidden">
+          <h2>Start in playground mode and price the build early</h2>
+          <p>Choose features, lock in a quote, then build a website or app-style project with separate desktop and phone layouts before checkout.</p>
+          <button id="emptyCreateBtn" class="btn primary">Start guided setup</button>
+        </div>
+
+        <div id="canvasStageWrap" class="canvas-stage-wrap">
+          <div class="canvas-toolbar">
+            <div>
+              <strong id="currentSiteName">No site selected</strong>
+              <div id="currentPageMeta" class="muted"></div>
+            </div>
+            <div class="canvas-toolbar-actions">
+              <button id="focusCanvasBtn" class="btn ghost compact">Focus canvas</button>
+              <button id="homePageBtn" class="btn ghost compact">Set page as home</button>
+              <button id="duplicatePageBtn" class="btn ghost compact">Duplicate page</button>
+              <button id="deletePageBtn" class="btn ghost compact">Delete page</button>
+            </div>
+          </div>
+
+          <div class="canvas-shell">
+            <div id="canvasScaleWrap" class="canvas-scale-wrap">
+              <div id="canvas" class="canvas"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="panel right-panel">
+        <section class="panel-card panel-shell">
+          <div class="section-title-row">
+            <h2>Inspector</h2>
+            <span class="pill">Focused</span>
+          </div>
+          <div class="panel-tabs">
+            <button class="panel-tab active" data-inspector-tab="site">Site</button>
+            <button class="panel-tab" data-inspector-tab="block">Block</button>
+          </div>
+          <div class="panel-scroll">
+            <div class="tab-panel active" data-inspector-view="site">
+              <div class="section-title-row compact-row">
+                <h2>Site settings</h2>
+              </div>
+              <div id="siteInspector"></div>
+            </div>
+            <div class="tab-panel" data-inspector-view="block">
+              <div class="section-title-row compact-row">
+                <h2>Selected block</h2>
+              </div>
+              <div id="elementInspector" class="muted">Select a block to edit its content and styles.</div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <div id="modalRoot"></div>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

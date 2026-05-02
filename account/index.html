@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Account | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="/auth.js"></script>
+</head>
+<body class="request-page blue-theme">
+  <main class="request-shell account-shell">
+    <div class="request-topbar">
+      <a class="back-link" href="/">← Back to wall</a>
+      <div class="request-auth">
+        <a class="secondary-chip" href="/admin/" data-admin-only hidden>Admin</a>
+        <button class="secondary-chip" type="button" data-auth-open="login">Log in</button>
+        <button class="primary-chip" type="button" data-auth-open="signup">Create account</button>
+        <button class="secondary-chip" type="button" data-auth-logout>Log out</button>
+      </div>
+    </div>
+
+    <section class="request-hero">
+      <div class="gallery-kicker">Client account</div>
+      <h1 class="gallery-title">Your account, project status, quotes, and next steps.</h1>
+      <p class="gallery-subtitle">This is your client dashboard. Use it to see your requests, accepted quotes, paid deposits, and the next step for each project.</p>
+    </section>
+
+    <div class="account-banner" data-account-banner hidden></div>
+
+    <section class="account-grid">
+      <div class="account-panel">
+        <h2>Your account</h2>
+        <div data-auth-summary class="account-stack"></div>
+      </div>
+      <div class="account-panel">
+        <h2>Saved devices</h2>
+        <div data-devices class="account-stack"></div>
+      </div>
+      <div class="account-panel span-2">
+        <h2>Project status</h2>
+        <p class="account-section-copy">After a deposit is paid, the project appears here with its current status, setup progress, and the next action.</p>
+        <div data-projects class="account-stack"></div>
+      </div>
+      <div class="account-panel span-2">
+        <h2>Requests and quotes</h2>
+        <div data-quotes class="account-stack"></div>
+      </div>
+    </section>
+  </main>
+  <script>window.ZEAuth.initIdentity(() => window.location.reload()); window.ZEAuth.bindAuthButtons(document);</script>
+  <script src="/account.js"></script>
+</body>
+</html>

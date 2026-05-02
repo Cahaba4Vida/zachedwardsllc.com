@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Console | Zach Edwards LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="ze-admin-body">
+  <main class="ze-admin-shell">
+    <section class="ze-admin-hero-card">
+      <div class="ze-admin-topbar">
+        <a class="ze-admin-back" href="/">← Back to site</a>
+        <button class="ze-admin-logout" type="button" data-admin-logout hidden>Log out</button>
+      </div>
+      <div class="ze-admin-kicker">Admin Console</div>
+      <h1>Control the homepage, gallery routing, and project pipeline.</h1>
+      <p>This page is now password-gated. Set your admin password in Netlify as <strong>ADMIN_PASSWORD</strong>, then log in here to manage the site.</p>
+      <div class="ze-admin-inline-status" data-admin-global-message></div>
+    </section>
+
+    <section class="ze-admin-login-card" data-admin-login-card>
+      <div class="ze-admin-login-copy">
+        <div class="ze-admin-kicker">Protected Access</div>
+        <h2>Enter admin password</h2>
+        <p>This unlocks the admin console and keeps the route private until you add a full production auth layer.</p>
+      </div>
+      <form class="ze-admin-login-form" data-admin-login-form>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" placeholder="Enter admin password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Unlock admin</button>
+        <div class="ze-admin-help" data-admin-login-message></div>
+      </form>
+    </section>
+
+    <section class="ze-admin-app" data-admin-app hidden>
+      <div class="ze-admin-stats" data-admin-stats></div>
+
+      <div class="ze-admin-grid">
+        <section class="ze-admin-panel ze-admin-panel-wide">
+          <div class="ze-admin-panel-head">
+            <div>
+              <div class="ze-admin-kicker">Homepage</div>
+              <h2>Site configuration</h2>
+            </div>
+            <div class="ze-admin-save-state" data-admin-save-state></div>
+          </div>
+
+          <form data-admin-config-form>
+            <div class="ze-admin-form-grid ze-admin-form-grid-main">
+              <label class="full"><span>Welcome kicker</span><input name="welcome.kicker"></label>
+              <label class="full"><span>Welcome title</span><textarea name="welcome.title" rows="3"></textarea></label>
+              <label class="full"><span>Welcome copy</span><textarea name="welcome.copy" rows="4"></textarea></label>
+              <label><span>Explore button label</span><input name="welcome.explore_label"></label>
+              <label><span>Account button label</span><input name="welcome.account_label"></label>
+              <label><span>Live updates label</span><input name="welcome.updates_label"></label>
+              <label class="full"><span>Live updates URL</span><input name="welcome.live_updates_url"></label>
+            </div>
+
+            <div class="ze-admin-editor-columns">
+              <section class="ze-admin-editor-block">
+                <div class="ze-admin-block-head">
+                  <h3>Wall items</h3>
+                  <p>Controls the homepage floating frames and routing.</p>
+                </div>
+                <div class="ze-admin-stack" data-admin-wall-items></div>
+              </section>
+
+              <section class="ze-admin-editor-block">
+                <div class="ze-admin-block-head">
+                  <h3>Service cards</h3>
+                  <p>Controls the lane cards and the gallery jump links.</p>
+                </div>
+                <div class="ze-admin-stack" data-admin-service-cards></div>
+              </section>
+            </div>
+
+            <div class="ze-admin-actions">
+              <button class="ze-admin-primary" type="submit">Save site config</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="ze-admin-panel">
+          <div class="ze-admin-panel-head">
+            <div>
+              <div class="ze-admin-kicker">Pipeline</div>
+              <h2>Client projects</h2>
+            </div>
+          </div>
+          <p class="ze-admin-panel-copy">Move paid projects through setup, build, review, and completion from one place.</p>
+          <div class="ze-admin-stack" data-admin-projects></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/admin.js"></script>
+</body>
+</html>
