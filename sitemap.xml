@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://zachedwardsllc.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://zachedwardsllc.com/bio/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zachedwardsllc.com/websites/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zachedwardsllc.com/agents/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zachedwardsllc.com/apps/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zachedwardsllc.com/software/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zachedwardsllc.com/request-website/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zachedwardsllc.com/request-app/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zachedwardsllc.com/request-software/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zachedwardsllc.com/legal/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+</urlset>
